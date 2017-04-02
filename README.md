@@ -1,18 +1,13 @@
-# cerebro-npm
-> Cerebro plugin to search NPM packages
+# cerebro-chocolatey
+> Cerebro plugin to install Windows packages with Chocolatey
 
-![](https://travis-ci.org/JordanAdams/cerebro-npm.svg?branch=master)
-
-<div align="center">
-  <img src="https://github.com/JordanAdams/cerebro-npm/blob/master/.github/screenshot.png?raw=true" />
-</div>
+_forked from the cerebro-npm plugin_
 
 ## Usage
-Search for NPM packages using "**npm** [search term]".
+Search for Chocolatey packages using "**choco** [search term]".
 
-* <kbd>Return</kbd> - Open a package on the NPM website.
-* <kbd>alt+return</kbd> - Open a package github repository.
-* <kbd>cmd+c</kbd> - Copy the install command eg. `npm install -S react`
+* <kbd>Return</kbd> - Opens an admin PowerShell console and installs package
+* <kbd>Ctrl+C</kbd> - Copy the install command eg. `choco install Firefox -yv`
 
 ## License
 MIT © Jordan Adams

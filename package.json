@@ -1,84 +1,83 @@
 {
-  "name": "cerebro-npm",
-  "version": "0.2.2",
-  "description": "A Cerebro plugin for searching NPM packages",
-  "license": "MIT",
-  "repository": "jordanadams/cerebro-npm",
-  "author": {
-    "name": "Jordan Adams",
-    "email": "hi@jordanadams.co.uk",
-    "url": "http://github.com/jordanadams"
-  },
-  "engines": {
-    "node": ">=6"
-  },
-  "scripts": {
-    "build": "webpack && babili dist -d dist --compact --no-comments",
-    "debug": "./scripts/debug",
-    "debug:windows": "scripts\\debug.bat",
-    "prepublish": "rimraf ./dist && npm run build",
-    "lint": "xo",
-    "test": "mocha --require ./test/utils/init.js"
-  },
-  "pre-commit": [
-    "lint"
-  ],
-  "main": "dist/index.js",
-  "keywords": [
-    "cerebro",
-    "cerebro-plugin",
-    "npm",
-    "package manager"
-  ],
-  "dependencies": {
-    "cerebro-tools": "^0.1.0",
-    "p-debounce": "^1.0.0",
-    "request": "^2.81.0",
-    "request-promise-native": "^1.0.3"
-  },
-  "devDependencies": {
-    "babel-cli": "^6.18.0",
-    "babel-loader": "^6.2.8",
-    "babel-plugin-syntax-jsx": "^6.18.0",
-    "babel-plugin-transform-react-jsx": "^6.8.0",
-    "babel-register": "^6.23.0",
-    "babili": "0.0.9",
-    "chai": "^3.5.0",
-    "css-loader": "^0.26.0",
-    "dirty-chai": "^1.2.2",
-    "json-loader": "^0.5.4",
-    "mocha": "^3.2.0",
-    "pre-commit": "^1.2.2",
-    "proxyquire": "^1.7.11",
-    "react": "^15.4.1",
-    "request-promise-native": "^1.0.3",
-    "require-hacker": "^2.1.4",
-    "rimraf": "^2.6.1",
-    "sinon": "^1.17.7",
-    "sinon-chai": "^2.8.0",
-    "style-loader": "^0.13.1",
-    "url-loader": "^0.5.7",
-    "webpack": "2.1.0-beta.27",
-    "xo": "^0.17.1"
-  },
-  "xo": {
-    "space": 2,
-    "envs": [
-      "node",
-      "mocha"
-    ],
-    "rules": {
-      "object-curly-spacing": [
-        "error",
-        "always"
-      ],
-      "no-unused-vars": [
-        "error",
-        {
-          "ignoreRestSiblings": true,
-          "varsIgnorePattern": "$_*^"
-        }
-      ]
-    }
-  }
+	"name": "cerebro-chocolatey",
+	"version": "0.1.0",
+	"description": "A Cerebro plugin for installing packages with Chocolatey",
+	"license": "MIT",
+	"repository": "tobico/cerebro-chocolatey",
+	"author": {
+		"name": "Tobias Cohen",
+		"email": "me@tobiascohen.com",
+		"url": "https://github.com/tobico"
+	},
+	"engines": {
+		"node": ">=6"
+	},
+	"scripts": {
+		"build": "webpack && babili dist -d dist --compact --no-comments",
+		"debug": "./scripts/debug",
+		"debug:windows": "scripts\\debug.bat",
+		"prepublish": "rimraf ./dist && npm run build",
+		"lint": "xo",
+		"test": "mocha --require ./test/utils/init.js"
+	},
+	"pre-commit": [
+		"lint"
+	],
+	"main": "dist/index.js",
+	"keywords": [
+		"cerebro",
+		"cerebro-plugin",
+		"chocolatey",
+		"package manager"
+	],
+	"dependencies": {
+		"cerebro-tools": "^0.1.0",
+		"node-powershell": "^3.1.1",
+		"p-debounce": "^1.0.0"
+	},
+	"devDependencies": {
+		"babel-cli": "^6.18.0",
+		"babel-loader": "^6.2.8",
+		"babel-plugin-syntax-jsx": "^6.18.0",
+		"babel-plugin-transform-react-jsx": "^6.8.0",
+		"babel-register": "^6.23.0",
+		"babili": "0.0.9",
+		"chai": "^3.5.0",
+		"css-loader": "^0.26.0",
+		"dirty-chai": "^1.2.2",
+		"json-loader": "^0.5.4",
+		"mocha": "^3.2.0",
+		"pre-commit": "^1.2.2",
+		"proxyquire": "^1.7.11",
+		"react": "^15.4.1",
+		"request-promise-native": "^1.0.3",
+		"require-hacker": "^2.1.4",
+		"rimraf": "^2.6.1",
+		"sinon": "^1.17.7",
+		"sinon-chai": "^2.8.0",
+		"style-loader": "^0.13.1",
+		"url-loader": "^0.5.7",
+		"webpack": "2.1.0-beta.27",
+		"xo": "^0.17.1"
+	},
+	"xo": {
+	"semicolon": false,
+		"envs": [
+			"node",
+			"mocha"
+		],
+		"rules": {
+			"object-curly-spacing": [
+				"error",
+				"always"
+			],
+			"no-unused-vars": [
+				"error",
+				{
+					"ignoreRestSiblings": true,
+					"varsIgnorePattern": "$_*^"
+				}
+			]
+		}
+	}
 }

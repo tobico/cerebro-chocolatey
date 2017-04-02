@@ -1,57 +1,48 @@
-const debounce = require('p-debounce');
-const { memoize } = require('cerebro-tools');
-const icon = require('./assets/npm-logo.png');
-const config = require('./config');
-const npm = require('./npm');
+const debounce = require('p-debounce')
+const { memoize } = require('cerebro-tools')
+const icon = require('./assets/choco-logo.svg')
+const config = require('./config')
+const search = require('./choco-search')
+const install = require('./choco-install')
 
-const searchPackages = debounce(memoize(npm.search, config.memoization), config.debounce);
+const searchPackages = debounce(memoize(search, config.memoization), config.debounce)
 
 const queryFromTerm = term => {
-  const match = term.match(/^npm (.+)$/);
-  return match ? match[1].trim() : null;
-};
+	const match = term.match(/^choco (.+)$/)
+	return match ? match[1].trim() : null
+}
 
-const displayResult = ({ display, actions }, result) => {
-  const { name, description, links } = result.package;
+const displayResult = (display, { name, version, title, description }) => {
+	display({
+		icon,
+		id: `choco-${name}`,
+		term: name,
+		title: `${title} (${version})`,
+		subtitle: description,
+		clipboard: `choco install ${name} -yv`,
+		onSelect: () => install(name)
+	})
+}
 
-  display({
-    icon,
-    id: `npm-${name}`,
-    term: name,
-    title: name,
-    subtitle: description,
-    clipboard: `npm i -S ${name}`,
-    onSelect: event => {
-      const { npm, repository } = links;
-      const url = (event.altKey && repository) ? repository : npm;
+const fn = ({ term, display, hide }) => {
+	const query = queryFromTerm(term)
+	if (!query) {
+		return null
+	}
 
-      actions.open(url);
-    }
-  });
-};
+	display({ icon, id: 'choco-loading', title: 'Searching Chocolatey packages ...' })
 
-const fn = scope => {
-  const { term, display, hide } = scope;
-  const query = queryFromTerm(term);
+	return searchPackages(query)
+		.then(results => {
+			hide('choco-loading')
 
-  if (!query) {
-    return null;
-  }
-
-  display({ icon, id: 'npm-loading', title: 'Searching NPM packages ...' });
-
-  return searchPackages(query)
-    .then(results => {
-      hide('npm-loading');
-
-      results.slice(0, 10)
-        .forEach(result => displayResult(scope, result));
-    });
-};
+			results.forEach(result => displayResult(display, result))
+		})
+}
 
 module.exports = {
-  icon,
-  fn,
-  keyword: config.plugin.keyword,
-  name: 'Search NPM packages'
-};
+	icon,
+	fn,
+	keyword: config.plugin.keyword,
+	name: 'Install packages with Chocolatey'
+}

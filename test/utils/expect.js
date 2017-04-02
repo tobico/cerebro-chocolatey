@@ -1,8 +1,8 @@
-const chai = require('chai');
-const dirtyChai = require('dirty-chai');
-const sinonChai = require('sinon-chai');
+const chai = require('chai')
+const dirtyChai = require('dirty-chai')
+const sinonChai = require('sinon-chai')
 
-chai.use(dirtyChai);
-chai.use(sinonChai);
+chai.use(dirtyChai)
+chai.use(sinonChai)
 
-module.exports = chai.expect;
+module.exports = chai.expect

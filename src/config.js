@@ -1,9 +1,9 @@
 module.exports = {
-  plugin: {
-    id: 'npm',
-    keyword: 'npm',
-    name: 'Search NPM Packages'
-  },
-  memoization: 60 * 1000,
-  debounce: 300
-};
+	plugin: {
+		id: 'choco',
+		keyword: 'choco',
+		name: 'Search Chocolatey Packages'
+	},
+	memoization: 60 * 1000,
+	debounce: 500
+}

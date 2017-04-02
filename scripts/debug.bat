@@ -1,8 +1,8 @@
 @echo off
 IF "%1%"==""dev"" (
-  set appname=Electron
+	set appname=Electron
 ) ELSE (
-  set appname=Cerebro
+	set appname=Cerebro
 )
 
 for %%* in (.) do set dirname=%%~nx*
